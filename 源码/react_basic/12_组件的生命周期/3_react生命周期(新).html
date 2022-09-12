@@ -9,9 +9,12 @@
 	<div id="test"></div>
 	
 	<!-- 引入react核心库 -->
-	<script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+	<!-- <script type="text/javascript" src="../js/17.0.1/react.development.js"></script> -->
 	<!-- 引入react-dom，用于支持react操作DOM -->
-	<script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+	<!-- <script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script> -->
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	
 	<!-- 引入babel，用于将jsx转为js -->
 	<script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
 
@@ -64,6 +67,7 @@
 			//若state的值在任何时候都取决于props，那么可以使用getDerivedStateFromProps
 			static getDerivedStateFromProps(props,state){
 				console.log('getDerivedStateFromProps',props,state);
+				// return {count:100}
 				return null
 			}
 
