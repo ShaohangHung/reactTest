@@ -11,7 +11,7 @@ export default class App extends Component {
       { id: "001", name: "吃飯", done: true },
       { id: "002", name: "睡覺", done: true },
       { id: "003", name: "寫code", done: false },
-      { id: "004", name: "逛街", done: true },
+      { id: "004", name: "逛街", done: false },
     ],
   };
 
@@ -36,11 +36,24 @@ export default class App extends Component {
   deleteItem = (id) => {
     let { todos } = this.state;
     todos = todos.filter((todo) => {
-      if (todo.id === id) {
-        return false;
-      } else {
-        return true;
-      }
+      return todo.id === id ? false : true;
+    });
+    this.setState({ todos: todos });
+  };
+
+  deleteFinishedItems = () => {
+    let { todos } = this.state;
+    todos = todos.filter((todo) => {
+      return todo.done ? false : true;
+    });
+    this.setState({ todos: todos });
+  };
+
+  checkAllItems = (done) => {
+    let { todos } = this.state;
+    todos = todos.map((todo) => {
+      todo.done = done;
+      return todo;
     });
     this.setState({ todos: todos });
   };
@@ -56,7 +69,11 @@ export default class App extends Component {
             updateItem={this.updateItem}
             deleteItem={this.deleteItem}
           />
-          <Footer />
+          <Footer
+            todos={todos}
+            deleteFinishedItems={this.deleteFinishedItems}
+            checkAllItems={this.checkAllItems}
+          />
         </div>
       </div>
     );
