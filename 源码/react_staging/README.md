@@ -76,18 +76,21 @@
 				3.使用HashRouter
 
 ## 八、路由的严格匹配与模糊匹配
-				1.默认使用的是模糊匹配（简单记：【输入的路径】必须包含要【匹配的路径】，且顺序要一致）
-				2.开启严格匹配：<Route exact={true} path="/about" component={About}/>
+				1.V6下默认使用的是嚴格匹配
+				2.模糊匹配：<Route path="/home/*" component={Home}/>
 				3.严格匹配不要随便开启，需要再开，有些时候开启会导致无法继续匹配二级路由
 
-## 九、Redirect的使用	
-				1.一般写在所有路由注册的最下方，当所有路由都无法匹配时，跳转到Redirect指定的路由
+## 九、Navigate的使用	
+				1.一般写在所有路由注册的最下方，当所有路由都无法匹配时，跳转到Navigate指定的路由
 				2.具体编码：
-						<Switch>
-							<Route path="/about" component={About}/>
-							<Route path="/home" component={Home}/>
-							<Redirect to="/about"/>
-						</Switch>
+					<Routes>
+						<Route
+						path="*"
+						element={<Navigate replace to="/about" />}
+						/>
+						<Route path="/about" element={<About a={1} />} />
+						<Route path="/home/*" element={<Home a={1} />} />
+					</Routes>
 
 ## 十、嵌套路由
 				1.注册子路由时要写上父路由的path值

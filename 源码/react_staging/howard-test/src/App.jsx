@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, Navigate } from "react-router-dom";
 import About from "./components/Router/About";
 import Home from "./components/Router/Home";
 import Header from "./components/Router/Header";
-import Test from "./components/Router/Test";
-import MyNavlink from "./components/MyNavlink";
+import MyNavLink from "./components/MyNavLink";
 
 export default class App extends Component {
   render() {
@@ -17,14 +16,14 @@ export default class App extends Component {
             </div>
           </div>
         </div>
-        {/*BrowserRouter要包含註冊NavLink和註冊Route*/}
-        <BrowserRouter>
+        {/*HashRouter要包含註冊NavLink和註冊Route*/}
+        <HashRouter>
           <div className="row">
             <div className="col-xs-2 col-xs-offset-2">
               <div className="list-group">
                 {/*註冊NavLink*/}
-                <MyNavlink to="/about">About</MyNavlink>
-                <MyNavlink to="/home">Home</MyNavlink>
+                <MyNavLink to="/about">About</MyNavLink>
+                <MyNavLink to="/home">Home</MyNavLink>
               </div>
             </div>
             <div className="col-xs-6">
@@ -33,14 +32,17 @@ export default class App extends Component {
                   {/*註冊Route*/}
                   <Routes>
                     <Route path="/about" element={<About a={1} />} />
-                    <Route path="/home" element={<Test a={1} />} />
-                    <Route path="/home" element={<Home a={1} />} />
+                    <Route path="/home/*" element={<Home a={1} />} />
+                    <Route
+                      path="/"
+                      element={<Navigate replace to="/about" />}
+                    />
                   </Routes>
                 </div>
               </div>
             </div>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }
