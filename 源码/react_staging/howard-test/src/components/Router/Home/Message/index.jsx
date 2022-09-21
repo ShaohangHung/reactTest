@@ -18,8 +18,22 @@ export default class Message extends Component {
           {messageArr.map((message) => {
             return (
               <li key={message.id}>
-                <Link to={`detail/${message.id}/${message.title}`}>
-                  {message.title}
+                {/* 傳params */}
+                {/* <Link to={`detail/${message.id}/${message.title}`}>
+                  {message.title}詳細資訊
+                </Link> */}
+
+                {/* 傳search */}
+                {/* <Link to={`detail/?id=${message.id}&title=${message.title}`}>
+                  {message.title}詳細資訊
+                </Link> */}
+
+                {/* 傳state */}
+                <Link
+                  to={`detail`}
+                  state={{ id: message.id, title: message.title }}
+                >
+                  {message.title}詳細資訊
                 </Link>
               </li>
             );
@@ -27,7 +41,14 @@ export default class Message extends Component {
         </ul>
         <hr />
         <Routes>
-          <Route path="detail/:id/:title" element={<Detail />} />
+          {/* 傳params */}
+          {/* <Route path="detail/:id/:title" element={<Detail />} /> */}
+
+          {/* search不需宣告接收, 正常註冊即可 */}
+          {/* <Route path="detail" element={<Detail />} /> */}
+
+          {/* state不需宣告接收, 正常註冊即可 */}
+          <Route path="detail" element={<Detail />} />
         </Routes>
       </div>
     );

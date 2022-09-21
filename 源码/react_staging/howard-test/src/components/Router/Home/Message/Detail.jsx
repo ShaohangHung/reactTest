@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+import qs from "qs";
 
 const data = {
   1: `你好, 訊息1`,
@@ -7,7 +8,16 @@ const data = {
 };
 
 export default function Detail() {
-  const { id, title } = useParams();
+  // 接收params
+  // const { id, title } = useParams();
+
+  // 接收search
+  // const { search } = useLocation();
+  // const { id, title } = qs.parse(search.slice(1));
+
+  // 接收state
+  const { state } = useLocation();
+  const { id, title } = state || {};
   return (
     <ul>
       <li>ID: {id}</li>
