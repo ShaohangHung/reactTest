@@ -9,15 +9,15 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="col-xs-offset-2 col-xs-8">
-            <div className="page-header">
-              <Header a={1} />
-            </div>
-          </div>
-        </div>
         {/*HashRouter要包含註冊NavLink和註冊Route*/}
         <HashRouter>
+          <div className="row">
+            <div className="col-xs-offset-2 col-xs-8">
+              <div className="page-header">
+                <Header a={1} />
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-xs-2 col-xs-offset-2">
               <div className="list-group">
