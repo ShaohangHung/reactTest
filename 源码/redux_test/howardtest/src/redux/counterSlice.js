@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = 0;
 
-export const counterSlice = createSlice({
+export const countSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
     countReducer: (preState, payloadAction) => {
+      console.log(payloadAction.type);
       const { payload } = payloadAction;
       const { type, data } = payload;
       // console.log(preState);
@@ -24,7 +25,7 @@ export const counterSlice = createSlice({
 });
 
 // action creators
-export const { countReducer } = counterSlice.actions;
+export const { countReducer } = countSlice.actions;
 
 // reducer
-export default counterSlice.reducer;
+export default countSlice.reducer;

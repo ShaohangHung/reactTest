@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { countReducer } from "../../redux/counterSlice";
+//引入actionCreator，专门用于创建action object
+import {
+  createIncrementAction,
+  createDecrementAction,
+} from "../../redux/countAction";
 
 export default function Count() {
   let selectNumber = null;
@@ -11,26 +16,24 @@ export default function Count() {
   });
 
   const increment = () => {
-    dispatch(
-      countReducer({ type: "increment", data: Number(selectNumber.value) })
-    );
+    dispatch(countReducer(createIncrementAction(Number(selectNumber.value))));
   };
   const decrement = () => {
     dispatch(
-      countReducer({ type: "decrement", data: Number(selectNumber.value) })
+      countReducer(createDecrementAction(Number(selectNumber.value)))
     );
   };
   const incrementIfTotalIsOdd = () => {
     if (count % 2 !== 0) {
       dispatch(
-        countReducer({ type: "increment", data: Number(selectNumber.value) })
+        countReducer(createIncrementAction(Number(selectNumber.value)))
       );
     }
   };
   const incrementAsync = () => {
     setTimeout(() => {
       dispatch(
-        countReducer({ type: "increment", data: Number(selectNumber.value) })
+        countReducer(createIncrementAction(Number(selectNumber.value)))
       );
     }, 500);
   };
