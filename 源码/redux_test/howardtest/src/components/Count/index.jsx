@@ -1,41 +1,20 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { countReducer } from "../../redux/counterSlice";
-//引入actionCreator，专门用于创建action object
-import {
-  createIncrementAction,
-  createDecrementAction,
-} from "../../redux/countAction";
 
-export default function Count() {
+export default function Count(props) {
+  console.log("CountProps", props);
+  const { count } = props;
   let selectNumber = null;
   const [carName, setCarName] = useState(`Benz`);
-  const dispatch = useDispatch();
-  const count = useSelector((state) => {
-    return state.count;
-  });
 
-  const increment = () => {
-    dispatch(countReducer(createIncrementAction(Number(selectNumber.value))));
-  };
-  const decrement = () => {
-    dispatch(
-      countReducer(createDecrementAction(Number(selectNumber.value)))
-    );
-  };
+  const increment = () => props.increment(Number(selectNumber.value));
+  const decrement = () => props.decrement(Number(selectNumber.value));
   const incrementIfTotalIsOdd = () => {
     if (count % 2 !== 0) {
-      dispatch(
-        countReducer(createIncrementAction(Number(selectNumber.value)))
-      );
+      props.increment(Number(selectNumber.value));
     }
   };
   const incrementAsync = () => {
-    setTimeout(() => {
-      dispatch(
-        countReducer(createIncrementAction(Number(selectNumber.value)))
-      );
-    }, 500);
+    props.incrementAsync(Number(selectNumber.value));
   };
 
   return (

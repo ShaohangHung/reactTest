@@ -10,7 +10,7 @@ export const countSlice = createSlice({
       console.log(payloadAction.type);
       const { payload } = payloadAction;
       const { type, data } = payload;
-      // console.log(preState);
+      console.log(payload);
       //根据type决定如何加工数据
       switch (type) {
         case "increment": //如果是加
