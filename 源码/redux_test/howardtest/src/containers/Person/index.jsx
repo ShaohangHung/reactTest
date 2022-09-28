@@ -9,7 +9,7 @@ export function Person(props) {
   const { personArray, count } = props;
   const addPerson = () => {
     const name = nameNode.value;
-    const age = ageNode.value;
+    const age = Number(ageNode.value);
     const personObj = { id: nanoid(), name, age };
     props.addPerson(personObj);
     nameNode.value = "";

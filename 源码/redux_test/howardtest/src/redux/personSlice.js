@@ -10,7 +10,9 @@ export const personSlice = createSlice({
       console.log(preState);
       console.log(action);
       const { type, payload } = action;
-      return [payload, ...preState];
+      // return [payload, ...preState];
+      preState.unshift(payload);
+      return preState;
     },
   },
 });
