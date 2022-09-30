@@ -1,4 +1,4 @@
-import Demo from "./components/fragment";
+import Demo from "./components/errorBoundary/Parent";
 
 const App = () => {
   return <Demo />;
